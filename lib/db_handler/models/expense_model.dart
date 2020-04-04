@@ -1,4 +1,4 @@
-final String tableExpense = 'expenses';
+final String tableExpenses = 'expenses';
 final String columnID = '_id';
 final String columnItem = 'item';
 final String columnCategory = 'category';

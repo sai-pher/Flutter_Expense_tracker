@@ -10,12 +10,12 @@ class Expense {
   String _item;
   String _category; //TODO: make enum at some point
   double _cost;
-  DateTime
-      _date; //TODO: use [date.millisecondsSinceEpoch] to store in db and [DateTime.fromMillisecondsSinceEpoch] to convert back
+  DateTime _date; //TODO: use [date.millisecondsSinceEpoch] to store in db and [DateTime.fromMillisecondsSinceEpoch] to convert back
 
   // TODO: remember to take date as a DateTime.now()
   // Constructor
   Expense(this._item, this._category, this._cost, this._date);
+
 
   //constructor to create expense from map object
   Expense.fromMap(Map<String, dynamic> map) {
@@ -31,7 +31,7 @@ class Expense {
     var map = <String, dynamic>{
       columnItem: item,
       columnCategory: category,
-      columnCost: cost,
+      columnCost: cost.toDouble(),
       columnDate: dateMilli
     };
     if (id != null) {
@@ -63,4 +63,25 @@ class Expense {
   String get item => _item;
 
   int get id => _id;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is Expense &&
+              runtimeType == other.runtimeType &&
+              _item == other._item &&
+              _category == other._category &&
+              _cost == other._cost &&
+              _date == other._date;
+
+  @override
+  int get hashCode =>
+      _item.hashCode ^
+      _category.hashCode ^
+      _cost.hashCode ^
+      _date.hashCode;
+
+
+
+
 }

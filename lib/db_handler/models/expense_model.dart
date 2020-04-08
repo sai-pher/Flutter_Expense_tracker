@@ -1,23 +1,23 @@
-final String tableExpenses = 'expenses';
-final String columnID = '_id';
-final String columnItem = 'item';
-final String columnCategory = 'category';
-final String columnCost = 'cost';
-final String columnDate = 'date';
+import "package:expense_tracker/app/column_labels.dart";
 
+// ================= Expense class =================
+/// An object modeling a given user expense.
 class Expense {
   int _id;
   String _item;
-  String _category; //TODO: make enum at some point
+  String _category;
   double _cost;
-  DateTime _date; //TODO: use [date.millisecondsSinceEpoch] to store in db and [DateTime.fromMillisecondsSinceEpoch] to convert back
+  DateTime _date;
 
+  // ================= Constructors =================
   // TODO: remember to take date as a DateTime.now()
   // Constructor
   Expense(this._item, this._category, this._cost, this._date);
 
-
-  //constructor to create expense from map object
+  /// Constructor to create an `Expense` object from a map object.
+  ///
+  /// This constructor is to be used when getting full records from
+  /// the SQLite database.
   Expense.fromMap(Map<String, dynamic> map) {
     _id = map[columnID];
     _item = map[columnItem];
@@ -26,7 +26,12 @@ class Expense {
     dateMilli = map[columnDate];
   }
 
-  // Method to create map from expense object
+// ================= Helper methods =================
+  /// Method to create a map from an expense object.
+  ///
+  /// This method converts the given `Expense` object into
+  /// a map object with the column labels to be used in the SQLite
+  /// database.
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
       columnItem: item,
@@ -41,7 +46,8 @@ class Expense {
     return map;
   }
 
-  // Getters and setters
+// ================= Getters and setters =================
+
   // ignore: unnecessary_getters_setters
   DateTime get date => _date;
 
@@ -52,6 +58,7 @@ class Expense {
     _date = value;
   }
 
+  /// Sets `_date` value to DateTime object from [milliseconds] since epoch.
   set dateMilli(int milliseconds) {
     _date = DateTime.fromMillisecondsSinceEpoch(milliseconds);
   }
@@ -64,6 +71,7 @@ class Expense {
 
   int get id => _id;
 
+  // ================= Utility methods =================
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||

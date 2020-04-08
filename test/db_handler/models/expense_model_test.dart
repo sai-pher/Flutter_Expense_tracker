@@ -1,3 +1,4 @@
+import "package:expense_tracker/app/column_labels.dart";
 import 'package:expense_tracker/db_handler/models/expense_model.dart';
 import 'package:test/test.dart';
 
@@ -7,9 +8,7 @@ void main() {
 
     var exp1 = Expense("item", "category", 10, now);
 
-    test("Expense object should be created", () {
-      expect(true, exp1 != null);
-    });
+    test("Expense object should be created", () {});
 
     test("Expense object should have item name 'item'", () {
       expect("item", exp1.item);

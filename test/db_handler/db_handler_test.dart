@@ -1,4 +1,4 @@
-import 'package:expense_tracker/db_handler/db_handler.dart';
+import 'package:expense_tracker/db_handler/handlers/db_handler.dart';
 import 'package:test/test.dart';
 
 void main() {

@@ -14,17 +14,17 @@ milestones.
 - [ ] Create homepage data analytics view (Mock)
 - [ ] Create form page
 - [x] Write DB handler helper methods
-- [ ] Complete DB helper methods
-- [ ] Write doc-strings 
+- [x] Complete DB helper methods
+- [x] Write doc-strings 
 
 ## Issues
 - [x] None
 
 ## current status
 
-- [ ] Stable
+- [x] Stable
         : Will run as expected with available features.
-- [x] Tentative
+- [ ] Tentative
         : Will run but may break/throw runtime errors on some features.
 - [ ] Broken
         : Will not run due to unstable code/unhandled errors.

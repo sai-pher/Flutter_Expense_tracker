@@ -8,14 +8,19 @@ milestones.
 - Create singleton SQLite DB handler
 - Added DB helper methods
 - Wrote test cases for Expense model
+- Wrote proof of concept data analytics page
+- Fixed issue with wrong runtime casting from List.map()<Type>.toList() in dataTable
 
 ## TODO's
 - [x] Create singleton SQLite DB handler
-- [ ] Create homepage data analytics view (Mock)
+- [x] Create homepage data analytics view (Mock)
+- [x] Create homepage data analytics view (Functional Mock)
 - [ ] Create form page
 - [x] Write DB handler helper methods
 - [x] Complete DB helper methods
 - [x] Write doc-strings 
+- [ ] Create routes for both pages
+- [x] Connect database to app
 
 ## Issues
 - [x] None

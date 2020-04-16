@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import "package:expense_tracker/app/column_labels.dart";
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -25,7 +27,7 @@ class DBHandler {
 
   Future<Database> get database async {
     if (_database == null) {
-      _database = _initDatabase();
+      _database = await _initDatabase();
     } else {
       return _database;
     }
@@ -36,8 +38,13 @@ class DBHandler {
   /// Method to open connection to database.
   _initDatabase() async {
     // get directory for given platform.
-    String directoryPath = await getDatabasesPath();
-    String path = join(directoryPath, _databaseName);
+    String databasePath = await getDatabasesPath();
+    String path = join(databasePath, _databaseName);
+
+    // Make sure the directory exists
+    try {
+      await Directory(databasePath).create(recursive: true);
+    } catch (_) {}
 
     // open connection
     return await openDatabase(path, version: _version, onCreate: _onCreate);
@@ -47,12 +54,12 @@ class DBHandler {
   Future _onCreate(Database db, int version) async {
     print("Creating DB $_databaseName with table $tableExpenses...");
     await db.execute('''
-    CREATE TABLE $tableExpenses (
-      $columnID INTEGER PRIMARY KEY,
+    CREATE TABLE IF NOT EXISTS $tableExpenses (
+      $columnID INTEGER PRIMARY KEY AUTOINCREMENT,
       $columnItem TEXT NOT NULL,
       $columnCategory TEXT NOT NULL,
       $columnCost REAL NOT NULL,
-      $columnDate INT NOT NULL,
+      $columnDate INT NOT NULL
     )
     ''');
     print("DB Creation successful!");
@@ -86,7 +93,9 @@ class DBHandler {
   fromMappedList(List<Map<String, dynamic>> mapsList) {
     List mappedList = [];
     if (mapsList.length == 0) {
-      mappedList = null;
+      var now = DateTime.now();
+      var exp1 = Expense("None", "category", 0, now);
+      mappedList.add(exp1);
     } else {
       mapsList.forEach((map) => mappedList.add(Expense.fromMap(map)));
     }
@@ -108,15 +117,25 @@ class DBHandler {
   ///
   /// This method returns
   /// a list of successfully mapped `Expense` objects.
-  Future<List<Expense>> getAll() async {
+  getAll() async {
     // Query
-    Database db = await database;
+    final db = await database;
     List<Map<String, dynamic>> maps = await db.query(
       tableExpenses,
       columns: [columnID, columnItem, columnCategory, columnCost, columnDate],
     );
 
-    return fromMappedList(maps);
+    print("Raw maps: ${maps.runtimeType} \n$maps");
+
+    List<Expense> mappedList = maps.isNotEmpty
+        ? maps.map((map) => Expense.fromMap(map)).toList()
+        : [Expense("None", "category", 0, DateTime.now())];
+
+    print("Mapped list: ${mappedList.runtimeType} \n$mappedList");
+
+    return mappedList;
+
+//    return fromMappedList(maps);
   }
 
 // getExpensesBetweenDates
@@ -163,7 +182,8 @@ class DBHandler {
   getCategoryCostSums() async {
     Database db = await database;
 
-    String query = 'SELECT $columnCategory, SUM($columnCost) $columnCategoryCostSums '
+    String query =
+        'SELECT $columnCategory, SUM($columnCost) $columnCategoryCostSums '
         'FROM $tableExpenses GROUP BY $columnCategory';
 
     // {'$columnCategory': String category_name, '$columnCategoryCostSums': double cost_sum}
@@ -229,5 +249,4 @@ class DBHandler {
 
     return maps;
   }
-
 }

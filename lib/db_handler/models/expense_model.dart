@@ -89,7 +89,10 @@ class Expense {
       _cost.hashCode ^
       _date.hashCode;
 
-
+  @override
+  String toString() {
+    return 'Expense{_item: $_item, _cost: $_cost}';
+  }
 
 
 }

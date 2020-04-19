@@ -117,7 +117,7 @@ class DBHandler {
   ///
   /// This method returns
   /// a list of successfully mapped `Expense` objects.
-  getAll() async {
+  Future<List<Expense>> getAll() async {
     // Query
     final db = await database;
     List<Map<String, dynamic>> maps = await db.query(
@@ -125,13 +125,13 @@ class DBHandler {
       columns: [columnID, columnItem, columnCategory, columnCost, columnDate],
     );
 
-    print("Raw maps: ${maps.runtimeType} \n$maps");
+//    print("Raw maps: ${maps.runtimeType} \n$maps");
 
     List<Expense> mappedList = maps.isNotEmpty
-        ? maps.map((map) => Expense.fromMap(map)).toList()
+        ? maps.map<Expense>((map) => Expense.fromMap(map)).toList()
         : [Expense("None", "category", 0, DateTime.now())];
 
-    print("Mapped list: ${mappedList.runtimeType} \n$mappedList");
+//    print("Mapped list: ${mappedList.runtimeType} \n$mappedList");
 
     return mappedList;
 

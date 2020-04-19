@@ -10,17 +10,22 @@ milestones.
 - Wrote test cases for Expense model
 - Wrote proof of concept data analytics page
 - Fixed issue with wrong runtime casting from List.map()<Type>.toList() in dataTable
+- Fixed further issue with runtime casting by switching home_page to stateful widget.
+- Fully tested insert() and getAll() functions of DBHandler.
+- Created functional routes between home page and form page.
+- Created functional test database view using dataTable widget.
 
 ## TODO's
 - [x] Create singleton SQLite DB handler
 - [x] Create homepage data analytics view (Mock)
 - [x] Create homepage data analytics view (Functional Mock)
-- [ ] Create form page
+- [x] Create form page
 - [x] Write DB handler helper methods
 - [x] Complete DB helper methods
 - [x] Write doc-strings 
-- [ ] Create routes for both pages
+- [x] Create routes for both pages
 - [x] Connect database to app
+- [ ] Refactor test version app to be modular
 
 ## Issues
 - [x] None

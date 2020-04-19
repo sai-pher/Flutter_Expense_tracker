@@ -1,9 +1,15 @@
 import 'package:expense_tracker/db_handler/handlers/db_handler.dart';
+import 'package:expense_tracker/db_handler/models/expense_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
 //  final List<Expense> expenseList = DBHandler.handler.getAll();
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   final List<Map<String, dynamic>> testList = [
     {"item": "cake", "cost": 10},
     {"item": "cake", "cost": 10},
@@ -26,10 +32,18 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
 //    print(expenseList);
+
     return MaterialApp(
+
       theme: ThemeData(
           brightness: Brightness.dark, primaryColor: Colors.cyan[800]),
-      home: Scaffold(
+      home: homePage(context),
+      debugShowCheckedModeBanner: false,
+    );
+  }
+
+  homePage(BuildContext context) =>
+      Scaffold(
         appBar: AppBar(
           title: const Text("Analytics"),
         ),
@@ -73,15 +87,12 @@ class Home extends StatelessWidget {
 //          color: Colors.cyan[600],
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () => print("Add button pressed"),
+          onPressed: () => Navigator.pushNamed(context, '/form'),
           tooltip: "Add new Expense",
           child: Icon(Icons.add),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      ),
-      debugShowCheckedModeBanner: false,
-    );
-  }
+      );
 
   tableWidget() {
     return Row(
@@ -92,7 +103,8 @@ class Home extends StatelessWidget {
     );
   }
 
-  dataBody() => SingleChildScrollView(
+  dataBody() =>
+      SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: DataTable(
           columns: [
@@ -100,10 +112,11 @@ class Home extends StatelessWidget {
             DataColumn(label: Text("Cost")),
           ],
           rows: testList
-              .map((test) => DataRow(cells: [
-                    DataCell(Text(test["item"])),
-                    DataCell(Text(test["cost"].toString())),
-                  ]))
+              .map((test) =>
+              DataRow(cells: [
+                DataCell(Text(test["item"])),
+                DataCell(Text(test["cost"].toString())),
+              ]))
               .toList(),
         ),
       );
@@ -115,7 +128,7 @@ class Home extends StatelessWidget {
         Widget child;
 
         if (snapshot.hasData) {
-//          List<Expense> eList = snapshot.data;
+          List<Expense> expenseList = snapshot.data;
           child = SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: DataTable(
@@ -123,11 +136,12 @@ class Home extends StatelessWidget {
                 DataColumn(label: Text("Item")),
                 DataColumn(label: Text("Cost")),
               ],
-              rows: snapshot.data
-                  .map<DataRow>((expense) => DataRow(cells: [
-                        DataCell(Text(expense.item.toString())),
-                        DataCell(Text(expense.cost.toString())),
-                      ]))
+              rows: expenseList
+                  .map<DataRow>((expense) =>
+                  DataRow(cells: [
+                    DataCell(Text(expense.item.toString())),
+                    DataCell(Text(expense.cost.toString())),
+                  ]))
                   .toList(),
             ),
           );
@@ -141,24 +155,5 @@ class Home extends StatelessWidget {
       },
     );
   }
-
-//  dataBodyAsyncish() {
-//    var snapshot = DBHandler.handler.getAll();
-//    return SingleChildScrollView(
-//      scrollDirection: Axis.vertical,
-//      child: DataTable(
-//        columns: [
-//          DataColumn(label: Text("Item")),
-//          DataColumn(label: Text("Cost")),
-//        ],
-//        rows: snapshot.data
-//            .map((expense) => DataRow(cells: [
-//          DataCell(Text(expense.item)),
-//          DataCell(Text(expense.cost.toString())),
-//        ]))
-//            .toList(),
-//      ),
-//    );
-//  }
 
 }

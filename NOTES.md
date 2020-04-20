@@ -14,6 +14,7 @@ milestones.
 - Fully tested insert() and getAll() functions of DBHandler.
 - Created functional routes between home page and form page.
 - Created functional test database view using dataTable widget.
+- Modularised app design.
 
 ## TODO's
 - [x] Create singleton SQLite DB handler
@@ -25,10 +26,13 @@ milestones.
 - [x] Write doc-strings 
 - [x] Create routes for both pages
 - [x] Connect database to app
-- [ ] Refactor test version app to be modular
+- [x] Refactor test version app to be modular
+- [ ] Clean up UI
+- [ ] Implement test data analytics
 
 ## Issues
 - [x] None
+
 
 ## current status
 

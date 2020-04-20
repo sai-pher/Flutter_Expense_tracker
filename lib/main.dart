@@ -1,4 +1,5 @@
 import 'package:expense_tracker/pages/form_page.dart';
+import 'package:expense_tracker/pages/history_page.dart';
 import 'package:expense_tracker/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,7 @@ class ExpenseTracker extends StatelessWidget {
       routes: {
         '/home': (context) => Home(),
         '/form': (context) => ExpenseForm(),
+        '/history': (context) => HistoryPage()
       },
       theme: ThemeData(
           brightness: Brightness.dark, primaryColor: Colors.cyan[800]),

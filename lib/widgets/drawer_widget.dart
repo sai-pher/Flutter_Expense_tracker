@@ -7,7 +7,7 @@ class DrawerWidget extends StatelessWidget {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
-        children: const <Widget>[
+        children: <Widget>[
           DrawerHeader(
             decoration: BoxDecoration(
               color: Colors.cyan,
@@ -21,8 +21,9 @@ class DrawerWidget extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.message),
-            title: Text('Messages'),
+            leading: Icon(Icons.table_chart),
+            title: Text('History'),
+            onTap: () => Navigator.pushNamed(context, '/history'),
           ),
           ListTile(
             leading: Icon(Icons.account_circle),

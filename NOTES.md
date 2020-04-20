@@ -15,6 +15,7 @@ milestones.
 - Created functional routes between home page and form page.
 - Created functional test database view using dataTable widget.
 - Modularised app design.
+- Tested data analytics widgets
 
 ## TODO's
 - [x] Create singleton SQLite DB handler
@@ -27,8 +28,9 @@ milestones.
 - [x] Create routes for both pages
 - [x] Connect database to app
 - [x] Refactor test version app to be modular
-- [ ] Clean up UI
-- [ ] Implement test data analytics
+- [x] Clean up UI
+- [x] Implement test data analytics
+- [ ] Build functional data analytics widgets with database access
 
 ## Issues
 - [x] None

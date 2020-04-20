@@ -18,7 +18,7 @@ class _FormLayoutState extends State<FormLayout> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return null;
+    return formLayout();
   }
 
   formLayout() {

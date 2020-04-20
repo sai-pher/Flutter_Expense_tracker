@@ -1,5 +1,6 @@
+import 'package:expense_tracker/pages/form_page.dart';
 import 'package:expense_tracker/widgets/drawer_widget.dart';
-import 'package:expense_tracker/widgets/table_widget.dart';
+import 'package:expense_tracker/widgets/home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +25,7 @@ class _HomeState extends State<Home> {
           title: const Text("Analytics"),
         ),
         drawer: DrawerWidget(),
-        body: TableWidget(),
+        body: HomeScreen(),
         bottomNavigationBar: BottomAppBar(
           shape: CircularNotchedRectangle(),
           child: Container(
@@ -33,11 +34,16 @@ class _HomeState extends State<Home> {
 //          color: Colors.cyan[600],
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () => Navigator.pushNamed(context, '/form'),
+          onPressed: () {
+//            => Navigator.pushNamed(context, '/form')
+            showDialog(context: context, builder: (context) => ExpenseForm());
+          },
           tooltip: "Add new Expense",
           child: Icon(Icons.add),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       );
+
+//  _formPopUp() => FormPage
 
 }

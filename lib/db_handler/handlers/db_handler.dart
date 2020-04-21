@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import "package:expense_tracker/app/column_labels.dart";
+import 'package:expense_tracker/db_handler/models/category_cost_sums_model.dart';
+import 'package:expense_tracker/db_handler/models/item_cost_sums_model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -129,7 +131,7 @@ class DBHandler {
 
     List<Expense> mappedList = maps.isNotEmpty
         ? maps.map<Expense>((map) => Expense.fromMap(map)).toList()
-        : [Expense("None", "category", 0, DateTime.now())];
+        : [];
 
 //    print("Mapped list: ${mappedList.runtimeType} \n$mappedList");
 
@@ -154,7 +156,11 @@ class DBHandler {
         whereArgs: [lowerDateMilli, upperDateMilli],
         orderBy: '$columnDate ASC');
 
-    return await fromMappedList(maps);
+    List<Expense> mappedList = maps.isNotEmpty
+        ? maps.map<Expense>((map) => Expense.fromMap(map)).toList()
+        : [];
+
+    return mappedList;
   }
 
 // getTopNum
@@ -170,7 +176,11 @@ class DBHandler {
         orderBy: '$columnCost DESC',
         limit: limit);
 
-    return await fromMappedList(maps);
+    List<Expense> mappedList = maps.isNotEmpty
+        ? maps.map<Expense>((map) => Expense.fromMap(map)).toList()
+        : [];
+
+    return mappedList;
   }
 
   // getCategoryCostSums
@@ -189,7 +199,12 @@ class DBHandler {
     // {'$columnCategory': String category_name, '$columnCategoryCostSums': double cost_sum}
     List<Map<String, dynamic>> maps = await db.rawQuery(query);
 
-    return maps;
+    List<CategoryCostSum> mappedList = maps.isNotEmpty
+        ? maps.map<CategoryCostSum>((map) => CategoryCostSum.fromMap(map))
+        .toList()
+        : [];
+
+    return mappedList;
   }
 
   // getItemCostSums
@@ -207,7 +222,11 @@ class DBHandler {
     // {'$columnItem': String item_name, '$columnItemCostSums': double cost_sum}
     List<Map<String, dynamic>> maps = await db.rawQuery(query);
 
-    return maps;
+    List<ItemCostSum> mappedList = maps.isNotEmpty
+        ? maps.map<ItemCostSum>((map) => ItemCostSum.fromMap(map)).toList()
+        : [];
+
+    return mappedList;
   }
 
   // getTotalCostSince

@@ -16,6 +16,7 @@ milestones.
 - Created functional test database view using dataTable widget.
 - Modularised app design.
 - Tested data analytics widgets
+- Tested pie chart widget with database access
 
 ## TODO's
 - [x] Create singleton SQLite DB handler
@@ -30,7 +31,9 @@ milestones.
 - [x] Refactor test version app to be modular
 - [x] Clean up UI
 - [x] Implement test data analytics
-- [ ] Build functional data analytics widgets with database access
+- [x] Build functional data analytics widgets with database access
+- [ ] Build and test all data analytics widgets
+- [ ] clean up homepage
 
 ## Issues
 - [x] None

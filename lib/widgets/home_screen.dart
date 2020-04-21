@@ -19,6 +19,9 @@ class _HomeScreenState extends State<HomeScreen> {
         child: ListView(
           children: <Widget>[
             PieChartWidget(),
+            PieChartWidget(),
+            PieChartWidget(),
+            PieChartWidget(),
             Text("thing 2"),
             Text("thing 3"),
             Text("thing 4"),

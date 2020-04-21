@@ -1,7 +1,11 @@
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:expense_tracker/db_handler/handlers/db_handler.dart';
+import 'package:expense_tracker/db_handler/models/category_cost_sums_model.dart';
 import 'package:flutter/material.dart';
 
 class PieChartWidget extends StatefulWidget {
+
+
   @override
   _PieChartWidgetState createState() => _PieChartWidgetState();
 }
@@ -29,14 +33,54 @@ class _PieChartWidgetState extends State<PieChartWidget> {
     );
 
     // TODO: implement build
-    return Padding(
-      padding: new EdgeInsets.all(32.0),
-      child: new SizedBox(
-        height: 500.0,
-        child: chart,
+    return Container(
+      height: 300,
+      padding: EdgeInsets.all(16.0),
+      child: Card(
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: pieChart(),
+        ),
       ),
     );
   }
+
+  pieChart() =>
+      FutureBuilder(
+        future: DBHandler.handler.getCategoryCostSums(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          Widget child;
+
+          if (snapshot.hasData) {
+            List<CategoryCostSum> categorySumList = snapshot.data;
+
+            var series = [
+              charts.Series(
+                  id: 'Category Sums',
+                  data: categorySumList,
+                  domainFn: (CategoryCostSum category, _) =>
+                  category.categoryName,
+                  measureFn: (CategoryCostSum category, _) => category.costSum)
+            ];
+
+            var chart = charts.PieChart(
+              series,
+              animate: true,
+            );
+
+            child = SizedBox(
+//          height: 300,
+              child: chart,
+            );
+          } else if (snapshot.hasError) {
+            child = Text("Error: ${snapshot.error}\nData: ${snapshot.data}");
+          } else {
+            child = Text("Waiting... ");
+          }
+
+          return child;
+        },
+      );
 
 // TODO: Use Future builder to access data points in widgets
 // TODO: Create models classes for other data points

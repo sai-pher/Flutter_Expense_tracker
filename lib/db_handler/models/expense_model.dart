@@ -10,7 +10,6 @@ class Expense {
   DateTime _date;
 
   // ================= Constructors =================
-  // TODO: remember to take date as a DateTime.now()
   // Constructor
   Expense(this._item, this._category, this._cost, this._date);
 

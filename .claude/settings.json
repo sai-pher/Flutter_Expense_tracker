@@ -1,0 +1,29 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "dart format \"$CLAUDE_PROJECT_DIR/lib\" \"$CLAUDE_PROJECT_DIR/test\" --line-length 80 2>/dev/null || true",
+            "timeout": 30,
+            "statusMessage": "Formatting Dart files..."
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && flutter analyze 2>&1 | tail -10",
+            "timeout": 120,
+            "statusMessage": "Running flutter analyze..."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -15,7 +15,9 @@ This ticket does **not** implement any changes to the app code. It produces the 
 - Research Flutter CI/CD patterns with GitHub (APK artifact publishing, changelogs, releases)
 - Research modern Flutter testing practices
 - Research modern UI/UX design and mocking tools for Flutter
+- Research Flutter MCP servers and AI-assisted development tooling
 - Produce analysis and proposal documents from the research
+- Create Claude Code project configuration (`.mcp.json`, `.claude/settings.json`, custom slash commands)
 
 ## Working Directory
 
@@ -31,7 +33,8 @@ ai/tickets/SAI-0001/
 │   ├── ci-cd.md               ← CI/CD and GitHub release patterns
 │   ├── testing.md             ← Modern testing practices
 │   ├── design-tools.md        ← Design & mocking tools for Flutter
-│   └── other-best-practices.md← Additional modern Flutter patterns
+│   ├── other-best-practices.md← Additional modern Flutter patterns
+│   └── flutter-mcp-servers.md ← MCP servers for Flutter AI-assisted development
 └── analysis/
     ├── synthesis.md           ← Summary of major findings
     ├── repo-structure.md      ← Proposal for repo reorganisation
@@ -57,13 +60,14 @@ ai/tickets/SAI-0001/
 
 ### Phase 1 – Research
 
-- [ ] Research latest stable Flutter – gaps vs current project (`research/flutter-version.md`)
-- [ ] Research best practices for Flutter repo organisation (`research/repo-organisation.md`)
-- [ ] Research Flutter app architecture for local-only apps (`research/app-architecture.md`)
-- [ ] Research Flutter CI/CD & GitHub release patterns (`research/ci-cd.md`)
-- [ ] Research modern Flutter test practices (`research/testing.md`)
+- [x] Research latest stable Flutter – gaps vs current project (`research/flutter-version.md`)
+- [x] Research best practices for Flutter repo organisation (`research/repo-organisation.md`)
+- [x] Research Flutter app architecture for local-only apps (`research/app-architecture.md`)
+- [x] Research Flutter CI/CD & GitHub release patterns (`research/ci-cd.md`)
+- [x] Research modern Flutter test practices (`research/testing.md`)
 - [ ] Research modern design and mocking tools for Flutter (`research/design-tools.md`)
 - [ ] Research other relevant Flutter best practices (`research/other-best-practices.md`)
+- [x] Research Flutter MCP servers and AI dev tooling (`research/flutter-mcp-servers.md`)
 - [ ] Commit and push Phase 1 research docs
 
 ### Phase 2 – Analysis
@@ -72,6 +76,7 @@ ai/tickets/SAI-0001/
 - [ ] Write repo structure proposal (`analysis/repo-structure.md`)
 - [ ] Write Flutter update/refactor plan (`analysis/flutter-update.md`)
 - [ ] Write CI/CD implementation proposal (`analysis/ci-cd-proposal.md`)
-- [ ] Write AI-driven development improvements doc (`analysis/ai-development.md`)
+- [x] Write AI-driven development improvements doc (`analysis/ai-development.md`)
+- [ ] Create Claude Code project config (`.mcp.json`, `.claude/settings.json`, `.claude/commands/`)
 - [ ] Commit and push Phase 2 analysis docs
 - [ ] Update PR for final review

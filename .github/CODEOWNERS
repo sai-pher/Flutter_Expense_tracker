@@ -1,0 +1,17 @@
+# CODEOWNERS
+# Each line is a file pattern followed by one or more owners.
+# Owners are automatically requested for review when someone opens a
+# pull request that modifies code matching the pattern.
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Global default – repo owner reviews everything
+* @sai-pher
+
+# Core data layer
+lib/db_handler/ @sai-pher
+
+# CI/CD configuration
+.github/ @sai-pher
+
+# AI working documents
+ai/ @sai-pher

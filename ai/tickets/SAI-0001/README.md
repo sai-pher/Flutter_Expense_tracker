@@ -25,22 +25,23 @@ All documents for this ticket live in `ai/tickets/SAI-0001/`.
 
 ```
 ai/tickets/SAI-0001/
-├── README.md                  ← this file
+├── README.md                    ← this file
 ├── research/
-│   ├── flutter-version.md     ← Flutter SDK & package modernisation findings
-│   ├── repo-organisation.md   ← Repo layout best practices
-│   ├── app-architecture.md    ← Architecture patterns for local-only Flutter apps
-│   ├── ci-cd.md               ← CI/CD and GitHub release patterns
-│   ├── testing.md             ← Modern testing practices
-│   ├── design-tools.md        ← Design & mocking tools for Flutter
-│   ├── other-best-practices.md← Additional modern Flutter patterns
-│   └── flutter-mcp-servers.md ← MCP servers for Flutter AI-assisted development
+│   ├── flutter-version.md       ← Flutter SDK & package modernisation findings
+│   ├── repo-organisation.md     ← Repo layout best practices
+│   ├── app-architecture.md      ← Architecture patterns for local-only Flutter apps
+│   ├── ci-cd.md                 ← CI/CD and GitHub release patterns
+│   ├── ci-cd-testing.md         ← CI/CD and testing deep-dive
+│   ├── testing.md               ← Modern testing practices
+│   ├── state-management.md      ← State management options and tradeoffs
+│   ├── design-tools.md          ← Design & mocking tools for Flutter
+│   ├── other-best-practices.md  ← Additional modern Flutter patterns
+│   └── flutter-mcp-servers.md   ← MCP servers for Flutter AI-assisted development
 └── analysis/
-    ├── synthesis.md           ← Summary of major findings
-    ├── repo-structure.md      ← Proposal for repo reorganisation
-    ├── flutter-update.md      ← What needs to change to update Flutter
-    ├── ci-cd-proposal.md      ← CI/CD implementation plan
-    └── ai-development.md      ← Improvements to support AI-driven dev
+    ├── current-state-audit.md   ← Audit of current app state
+    ├── modernization-roadmap.md ← Full modernisation plan
+    ├── ci-cd-proposal.md        ← CI/CD implementation proposal
+    └── ai-development.md        ← Improvements to support AI-driven dev
 ```
 
 ## Task Checklist
@@ -65,18 +66,18 @@ ai/tickets/SAI-0001/
 - [x] Research Flutter app architecture for local-only apps (`research/app-architecture.md`)
 - [x] Research Flutter CI/CD & GitHub release patterns (`research/ci-cd.md`)
 - [x] Research modern Flutter test practices (`research/testing.md`)
-- [ ] Research modern design and mocking tools for Flutter (`research/design-tools.md`)
-- [ ] Research other relevant Flutter best practices (`research/other-best-practices.md`)
+- [x] Research modern design and mocking tools for Flutter (`research/design-tools.md`)
+- [x] Research state management options (`research/state-management.md`)
+- [x] Research other relevant Flutter best practices (`research/other-best-practices.md`)
 - [x] Research Flutter MCP servers and AI dev tooling (`research/flutter-mcp-servers.md`)
 - [ ] Commit and push Phase 1 research docs
 
 ### Phase 2 – Analysis
 
-- [ ] Write synthesis and summary document (`analysis/synthesis.md`)
-- [ ] Write repo structure proposal (`analysis/repo-structure.md`)
-- [ ] Write Flutter update/refactor plan (`analysis/flutter-update.md`)
-- [ ] Write CI/CD implementation proposal (`analysis/ci-cd-proposal.md`)
+- [x] Write current-state audit (`analysis/current-state-audit.md`)
+- [x] Write modernisation roadmap (`analysis/modernization-roadmap.md`)
+- [x] Write CI/CD implementation proposal (`analysis/ci-cd-proposal.md`)
 - [x] Write AI-driven development improvements doc (`analysis/ai-development.md`)
-- [ ] Create Claude Code project config (`.mcp.json`, `.claude/settings.json`, `.claude/commands/`)
+- [x] Create Claude Code project config (`.mcp.json`, `.claude/settings.json`, `.claude/commands/`)
 - [ ] Commit and push Phase 2 analysis docs
 - [ ] Update PR for final review

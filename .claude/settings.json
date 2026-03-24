@@ -18,7 +18,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cd \"$CLAUDE_PROJECT_DIR\" && flutter analyze 2>&1 | tail -10",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && flutter analyze 2>&1 | tail -5",
             "timeout": 120,
             "statusMessage": "Running flutter analyze..."
           }
